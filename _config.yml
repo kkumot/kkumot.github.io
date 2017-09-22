@@ -36,7 +36,7 @@ disqus_shortname: kkumot-github
 # hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxxxx";
 # xxxxx字符串
 baidu_tongji_id: 
-google_analytics_id: 
+google_analytics_id: UA-106890679-1
 
 # Build settings
 markdown: kramdown
