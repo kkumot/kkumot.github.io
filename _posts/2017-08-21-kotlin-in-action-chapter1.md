@@ -97,8 +97,91 @@ fun findBob() = findPerson { it.name == "Bob" }
 
 
 # 1.3 Kotlin Applications
+* 서버사이드, 안드로이드 개발에 사용할 수 있다.
 
 ## 1.3.1 Kotlin on the server side
+* 웹 어플리케이션, 모바일 어플리케이션의 backends, Microservices
+* 기존 자바 코드와 완벽히 호환된다.
+* HTML generation library이나 [Exposed framework](https://github.com/jetbrains/exposed)와 같은 깨끗하고 간결한 DSL로(을) 개발할 수 있다.
 
+## 1.3.2 Kotlin on Android
+* [Anko Library](https://github.com/kotlin/anko) : 안드로이드 개발을 더 빠르고 쉽게 하기위해코틀린 팀에서 만든 라이브러리
+* NPE에서 보다 더 안전하다. "Progress Has Stopped" dialog를 덜 보게 된다.
+* JAVA와 완벽하게 호환된다. (사용자가 안드로이드를 업그레이드 하지 않아도 코틀린의 새로운 기능을 쓸수 있다.)
+* 성능상 불리한 점도 없다.
+* 컴파일 후 어플리케이션 사이즈가 크게 증가하지도 않는다.
+* 람다와 코틀린의 표준 라이브러리 함수들은 인라인 처리 된다.
+* 인라인 처리된 람다는 새로운 오브젝트를 생성하지 않고, GC pauses를 겪지 않아도 된다.
+
+# 1.4 The Philosophy of Kotlin
+* pragmatic, concise, safe, interopeable
+
+## 1.4.1 Pragmatic
+* 실용적이다. 암튼, 실용적이다.
+* research language가 아니다. 그런건 computer science나 줘버려라.
+* 특정 프로그래밍 스타일, 패러다임을 강요하지 않는다.
+* IntelliJ 라는 훌륭한 툴이 있다. 이것만으로도 실용적이다.
+
+## 1.4.2 Concise
+* 새로운 코드를 작성하는 시간보다 다른 사람(또는 오래전에 내가 작성했던)의 코드를 읽는 시간이 더 많다.
+* 간단하고 간결한 코드는 더 빠르게 코드를 읽을 수 있게 한다.
+* 코틀린은 작성되는 모든 코드가 의미를 담도록 노력했다.
+* getter, setter, constructor의 파라메터 필드 할당 등의 잡다한 코드를 제거했다.
+* 람다를 쓸 수 있다.
+* 그렇다고 함수 등의 문자수를 막 줄이지는 않았다. 단어가 더 읽기 쉽다.
+
+## 1.4.3 Safe
+* 안전한 언어 : 프로그램의 오류를 방지하기 위한 설계.
+* 모든 에러를 방지할 수는 없다. 컴파일러에게 적절한 정보를 줘야 한다.
+* Java 보다 안전한 언어를 만들기 위해 노력했다.
+* JVM에는 이미 많은 안전장치들이 있다.
+* 모든 타입을 명시하지 않아도, 많은 케이스에 컴파일러가 자동적으로 타입을 추론한다.
+* 런타임이 아닌 컴파일타임에 더 많은 오류를 체크한다.
+* NPE을 제거하기 위해 노력한다.(최소한의 비용으로..)
+* nullable data를 다루기 위해 많은 편한 방법을 제공한다.
+* ClassCastException도 피할 수 있다.
+
+ ~~~ kotlin
+ if (value is String)   // 여기서 타입을 체크하면
+ 	println(value.toUpperCase()) // 따로 캐스팅 하지 않아도 된다.
+ ~~~
+
+
+## 1.4.4 Interoperable
+* "기존 라이브러리를 쓸 수 있나요??" "Yes, absolutely."
+* 자바 메소드를 호출하고, 클래스를 상속하고, 인터페이스를 구한할 수 있다.
+* 자바 annotation을 코틀린 클래스에 쓸 수 있다.
+* 한 프로젝트에서 자바 코드와 코틀린 코드를 함께 쓸 수 있다.
+* 코틀린은 기존 자바 라이브러리를 가능한 많이 사용하고 있다.
+ * 코틀린의 컬렉션은 자바의 컬렉션 라이브러리이다.
+ * 사용하기 좀 더 편하도록 함수를 추가했다.
+* IDE에서도 java, kotlin 관계없이 Navigate, Debug, Refactor할 수 있다.
+
+# 1.5 Using the kotlin tools
+* 환경설정은 [여기](https://kotlinlang.org/docs/tutorials)를 참고하자.
+
+## 1.5.1 Compiling Kotlin code
+![https://lh3.googleusercontent.com/IG7wxpKzmwnsHLlaO7NdZXmV_TE4V-cqqos6g-8hP_smrY2Pcwgx0552htBpV0-92enlRPKFmmXq2N0e8FgCyYGu-fs7LvCuqDtFZdWrzvXhcbfRz-mmQh1nzGhq0VzcQItVsQ6IgFhjjn9AFKKa2_4EbKytrBaLMYqeFVU4EW_2vLJcyzvHsEMfxzeQGW4OW45a7-oOX6706wGl4r6q9IcwkoeJATKTLMH0YGU-sYpuEdKH3idM78oNMoUH7ceVCVMDybgDBIl8bJtpAzcVom7VEEBBnaBE8pILVHQaO3WKOEheEU7dI0Rk3I4QC34Y3lRFCgsiiamq4v32I_AYReGbon-cP0ZlXVBZccWQ26WciQDe4jokmn8X5HcFZr5cWQKluVB_X4Nd26gNKuPCMiUpg9kzCjHoK4omkkNdzK9HH45xNk9W0_VyVLPOG2OsnnzuWNiElhHDLLOtAnshurDFip2ZnuK6MUmFRE81j19LzOQYbui0DuPaVUHZH_dGzbXVd_AfprVETVvUiQ5ORYPR-SSWOU7BHdsv-DKw60WN-CMPnLw_NE0ezKfA19y5bkOoGxw4_jwaTjbw47fRLhzVZjWNx05f_mrE-uYXhIwgKFFZSS-wh6a-t02eYCTuthmlaKfN0fJcEG06tmEHwe16T13tBmiAnw=w1226-h470-no](https://lh3.googleusercontent.com/IG7wxpKzmwnsHLlaO7NdZXmV_TE4V-cqqos6g-8hP_smrY2Pcwgx0552htBpV0-92enlRPKFmmXq2N0e8FgCyYGu-fs7LvCuqDtFZdWrzvXhcbfRz-mmQh1nzGhq0VzcQItVsQ6IgFhjjn9AFKKa2_4EbKytrBaLMYqeFVU4EW_2vLJcyzvHsEMfxzeQGW4OW45a7-oOX6706wGl4r6q9IcwkoeJATKTLMH0YGU-sYpuEdKH3idM78oNMoUH7ceVCVMDybgDBIl8bJtpAzcVom7VEEBBnaBE8pILVHQaO3WKOEheEU7dI0Rk3I4QC34Y3lRFCgsiiamq4v32I_AYReGbon-cP0ZlXVBZccWQ26WciQDe4jokmn8X5HcFZr5cWQKluVB_X4Nd26gNKuPCMiUpg9kzCjHoK4omkkNdzK9HH45xNk9W0_VyVLPOG2OsnnzuWNiElhHDLLOtAnshurDFip2ZnuK6MUmFRE81j19LzOQYbui0DuPaVUHZH_dGzbXVd_AfprVETVvUiQ5ORYPR-SSWOU7BHdsv-DKw60WN-CMPnLw_NE0ezKfA19y5bkOoGxw4_jwaTjbw47fRLhzVZjWNx05f_mrE-uYXhIwgKFFZSS-wh6a-t02eYCTuthmlaKfN0fJcEG06tmEHwe16T13tBmiAnw=w1226-h470-no)
+
+## 1.5.2 Plug-in for Intellij IDEA and Android Studio
+* 플러그인이 있다. 
+* 최신 버전에는 포함되어 있다.
+
+## 1.5.3 Interactive shell
+* REPL(Read Eval Print Loop)로 코틀린 코드를 한 줄씩 실행해 볼 수 있다.
+* 인자 없이 **kotlinc** 명령어를 사용하거나, 플러그인에서 해당 메뉴를 선택해라.
+
+## 1.5.4 Eclipse plug-in
+* 이클립스 플로그인도 있다. Marketplace에서 검색해라.
+
+## 1.5.5 Online playground
+* [여기](http://try.kotl.in)에서 온라인으로 코틀린 코드를 작성하고 실행해 볼 수 있다.
+
+## 1.5.6 Java-to-Kotlin converter
+* java 코드를 쉽게 kotlin 코드로 변경할 수 있다.
+* Intellij, Android Studio, Eclipse, Online 다 가능하다.
+
+---
+1장 끝.
 
 [^1]: [https://software.intel.com/en-us/multi-os-engine](https://software.intel.com/en-us/multi-os-engine)
