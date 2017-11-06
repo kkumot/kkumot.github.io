@@ -29,9 +29,9 @@ redirect_from:
 // build.gradle
 
 android {
-   //...
-	defaultConfig {
-	     //...
+    //...
+    defaultConfig {
+        //...
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
@@ -41,7 +41,7 @@ android {
 }
 ~~~
 
-* 위에서 설정한 디렉토리 밑에 RoomDatabase를 상속받은 클래스 패키지 폹더에 버전.json 파일이 생성된다.
+* 위에서 설정한 디렉토리 밑에 RoomDatabase를 상속받은 클래스 패키지 폴더에 버전.json 파일이 생성된다.
 
 ~~~ json
 {
